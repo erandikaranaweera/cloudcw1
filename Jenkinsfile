@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'cloudcw-338918'
         CLUSTER_NAME = 'cluster-1'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'erandiranaweera'
+        CREDENTIALS_ID = 'cloudCW'
     }
     stages {
         stage("Checkout code") {
@@ -15,14 +15,14 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("erandiranaweera/hello:${env.BUILD_ID}")
+                    myapp = docker.build("erandiranaweera/cloudtest:${env.BUILD_ID}")
                 }
             }
         }
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerID') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
                             myapp.push("latest")
                             myapp.push("${env.BUILD_ID}")
                     }
