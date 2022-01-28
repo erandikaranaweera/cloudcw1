@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: erandiranaweera/cloudtest:latest
+          image: erandiranaweera/erandicw:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
