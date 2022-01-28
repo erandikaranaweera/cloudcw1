@@ -1,86 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudCW
+  name: hello
   labels:
-    app: cloudCW
+    app: hello
 spec:
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: cloudCW
+      app: hello
       
   template:
     metadata:
       labels:
-        app: cloudCW
-        tier: cloudCW
+        app: hello
+        tier: hello
     spec:
       containers:
-        - name: cloudCW
+        - name: hello
           image: erandiranaweera/cloudtest:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
-            name: cloudCW
+            name: hello
 
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cloudCW
+  name: hello
   labels:
-    app: cloudCW
+    app: hello
 spec:
   ports:
     - port: 5000
       targetPort: 5000
   selector:
-    app: cloudCW
-    tier: cloudCW
-  type: LoadBalancer
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cloudCW
-  labels:
-    app: cloudCW
-spec:
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app: cloudCW
-      
-  template:
-    metadata:
-      labels:
-        app: cloudCW
-        tier: cloudCW
-    spec:
-      containers:
-        - name: cloudCW
-          image: erandiranaweera/cloudtest:latest
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 5000
-            name: cloudCW
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cloudCW
-  labels:
-    app: cloudCW
-spec:
-  ports:
-    - port: 5000
-      targetPort: 5000
-  selector:
-    app: cloudCW
-    tier: cloudCW
+    app: hello
+    tier: hello
   type: LoadBalancer
