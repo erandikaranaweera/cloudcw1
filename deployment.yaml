@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: cloudCW
   labels:
-    app: hello
+    app: cloudCW
 spec:
   strategy:
     type: Recreate
