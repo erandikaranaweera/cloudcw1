@@ -9,44 +9,44 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: hello
+      app: cloudCW
       
   template:
     metadata:
       labels:
-        app: hello
-        tier: hello
+        app: cloudCW
+        tier: cloudCW
     spec:
       containers:
-        - name: hello
-          image: <<Your DockerHub Username>>/hello:latest
+        - name: cloudCW
+          image: erandiranaweera/cloudtest:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
-            name: hello
+            name: cloudCW
 
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: cloudCW
   labels:
-    app: hello
+    app: cloudCW
 spec:
   ports:
     - port: 5000
       targetPort: 5000
   selector:
-    app: hello
-    tier: hello
+    app: cloudCW
+    tier: cloudCW
   type: LoadBalancer
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: cloudCW
   labels:
-    app: hello
+    app: cloudCW
 spec:
   strategy:
     type: Recreate
