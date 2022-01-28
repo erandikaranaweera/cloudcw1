@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = 'erandiranaweera'
+        PROJECT_ID = 'cloudcw-338918'
         CLUSTER_NAME = 'cluster-1'
         LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'erandiranaweera'
