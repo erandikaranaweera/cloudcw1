@@ -1,43 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: cloudtest
   labels:
-    app: hello
+    app: cloudtest
 spec:
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: hello
+      app: cloudtest
       
   template:
     metadata:
       labels:
-        app: hello
-        tier: hello
+        app: cloudtest
+        tier: cloudtest
     spec:
       containers:
-        - name: hello
+        - name: cloudtest
           image: erandiranaweera/erandicw:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
-            name: hello
+            name: cloudtest
 
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: cloudtest
   labels:
-    app: hello
+    app: cloudtest
 spec:
   ports:
     - port: 5000
       targetPort: 5000
   selector:
-    app: hello
-    tier: hello
+    app: cloudtest
+    tier: cloudtest
   type: LoadBalancer
