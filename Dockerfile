@@ -1,18 +1,12 @@
-#Dockerfile
+FROM node:latest
 
-FROM node:alpine
+WORKDIR /usr/src/app
 
-WORKDIR /backend
+COPY package*.json ./
 
-COPY package*.json .
-
-RUN yarn
+RUN npm install
 
 COPY . .
 
-RUN yarn run build
-
-EXPOSE 5000
-
-CMD ["yarn", "start"]
-
+EXPOSE 3000
+CMD [ "node", "index.js" ]
