@@ -1,21 +1,18 @@
-# Use the official lightweight Node.js 16 image.
-# https://hub.docker.com/_/node
-FROM node:17-slim
+#Dockerfile
 
-# Create and change to the app directory.
-WORKDIR /usr/src/app
+FROM node:alpine
 
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure both package.json AND package-lock.json are copied.
-# Copying this separately prevents re-running npm install on every code change.
-COPY package*.json ./
+WORKDIR /backend
 
-# Install production dependencies.
-RUN npm install --only=production
+COPY package*.json .
 
-# Copy local code to the container image.
-COPY . ./
+RUN yarn
 
-# Run the web service on container startup.
-CMD [ "npm", "start" ]
+COPY . .
+
+RUN yarn run build
+
+EXPOSE 5000
+
+CMD ["yarn", "start"]
 
