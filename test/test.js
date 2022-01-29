@@ -3,7 +3,7 @@ var should = require("should");
 
 // This agent refers to PORT where the program is running.
 
-var server = supertest.agent("http://localhost:3000");
+var server = supertest.agent("http://34.136.132.35:3000");
 
 // UNIT test begin
 
