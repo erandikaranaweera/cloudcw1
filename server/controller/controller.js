@@ -1,6 +1,6 @@
 var Userdb = require('../model/model');
 
-// create and save new user
+// create and save
 exports.create = (req,res)=>{
     // validate request
     if(!req.body){
@@ -17,7 +17,7 @@ exports.create = (req,res)=>{
         status : req.body.status
     })
 
-    // save user record in the database
+    // save 
     user
         .save(user)
         .then(data => {
@@ -63,7 +63,7 @@ exports.find = (req, res)=>{
     
 }
 
-// Update a new idetified user by user id
+// Update
 exports.update = (req, res)=>{
     if(!req.body){
         return res
@@ -85,7 +85,7 @@ exports.update = (req, res)=>{
         })
 }
 
-// Delete a user with specified user id in the request
+// Delete 
 exports.delete = (req, res)=>{
     const id = req.params.id;
 
@@ -95,13 +95,13 @@ exports.delete = (req, res)=>{
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
             }else{
                 res.send({
-                    message : "User was deleted successfully!"
+                    message : "deleted successfully!"
                 })
             }
         })
         .catch(err =>{
             res.status(500).send({
-                message: "Could not delete User with id=" + id
+                message: "Could not delete with id=" + id
             });
         });
 }
